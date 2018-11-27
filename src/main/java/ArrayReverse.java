@@ -9,7 +9,7 @@ public class ArrayReverse {
         arr[4] = 5;
         //System.out.println(arr);
         reverseTheArray(arr);
-        
+
 
         System.out.println(revArr);
     }
