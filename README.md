@@ -31,13 +31,21 @@ The approach is to find the midpoint of an array then iterates through the origi
 ![Code Challenge 2](assets/401-cc2-wb.JPG)
 
 # Challenge 3: Binary Search
-<!-- Short summary or background information -->
+Use Binary Search algorithm to find a key position in a sorted array
 
 ## Challenge
-<!-- Description of the challenge -->
+Write a function called BinarySearch which takes in 2 parameters: a sorted array and the search key, and return the index of the array’s element that is equal to the search key, or -1 if the element does not exist.
 
 ## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+Time - Big(log n) efficiency achieved from use of binary search methodology
 
 ## Solution
-<!-- Embedded whiteboard image -->
+![Code Challenge 3](assets/401-cc3-wb.JPG)
+
+### Checklist
+
+- [x] Read challenge
+- [x] Whiteboard challenge
+- [x] Code Challenge
+- [x] Write tests
+- [x] A-C-P and document
