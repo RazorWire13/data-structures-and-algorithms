@@ -15,6 +15,7 @@ public class ArrayShift {
         int val = 100;
         insertShiftArray(arrList, val);
         System.out.println("The modified array with the value added now looks like this " + arrList);
+
     }
 
     public static ArrayList<Integer> insertShiftArray(ArrayList arrList, int val) {
@@ -26,6 +27,7 @@ public class ArrayShift {
         System.out.println("The midpoint of the array is at position " + mid);
         arrList.add(mid, val);
         return (arrList);
+
 
     }
 
