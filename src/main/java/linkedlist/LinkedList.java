@@ -1,13 +1,20 @@
 package linkedlist;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class LinkedList {
 
-    private Node head;
+    public static void main(String[] args) {
+        LinkedList testLinkList = new LinkedList();
+        testLinkList.insert(2);
+        testLinkList.insert(3);
+        testLinkList.insert(1);
+        testLinkList.append(5);
+        testLinkList.print();
+    }
 
-    private Node current;
+    protected Node head;
+    protected Node current;
 
     public LinkedList() {
         this.head = null;
@@ -34,9 +41,38 @@ public class LinkedList {
         ArrayList<Integer> nodeValues = new ArrayList<>();
         while (current != null) {
             nodeValues.add(current.value);
-            System.out.println(current.value);
+            System.out.println(current.value + " ");
             current = current.next;
         }
         return nodeValues;
+    }
+
+    public void append(int value) {
+        current = head;
+        while (current != null) {
+            current = current.next;
+        }
+        current = new Node(value, null);
+        System.out.println(current);
+    }
+
+    public void addBefore(int value, int newValue) {
+        while (current != null) {
+            if (current.next.value == value) {
+                current = new Node (newValue, current.next);
+            }
+            current = current.next;
+        }
+        System.out.println(current);
+    }
+
+    public void addAfter(int value, int newValue ) {
+        while (current != null) {
+            if (current.value == value) {
+                current.next = new Node (newValue, current.next);
+            }
+            current = current.next;
+        }
+        System.out.println(current.next);
     }
 }

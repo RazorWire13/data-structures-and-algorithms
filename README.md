@@ -10,3 +10,4 @@
 ## Week 2
 
 * [Challenge 5: Linked List Data Structure](./readmes/linkedlist.md)
+* [Challenge 6: Linked List Insertions](./readmes/ll_insertions.md)
