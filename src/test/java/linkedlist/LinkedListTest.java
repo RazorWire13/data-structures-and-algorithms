@@ -10,47 +10,45 @@ public class LinkedListTest {
 
     @Test
     public void testInsert() {
-        LinkedList testLinkList = new LinkedList();
-        testLinkList.insert(1);
+        LinkedList testLL = new LinkedList();
+        testLL.insert(1);
         assertNotNull("insert should create a node");
 
     }
 
     @Test
     public void testIncludes() {
-        LinkedList testLinkList = new LinkedList();
-            testLinkList.insert(2);
-            testLinkList.insert(3);
-            testLinkList.insert(1);
+        LinkedList testLL = new LinkedList();
+        testLL.insert(2);
+        testLL.insert(3);
+        testLL.insert(1);
 
-        assertFalse("includes should return 'false' when a value doesn't exist", testLinkList.includes(10));
-        assertTrue("includes should return 'true' when a value exists", testLinkList.includes(2));
+        assertFalse("includes should return 'false' when a value doesn't exist", testLL.includes(10));
+        assertTrue("includes should return 'true' when a value exists", testLL.includes(2));
     }
 
     @Test
     public void testPrint() {
-        LinkedList testLinkList = new LinkedList();
-            testLinkList.insert(5);
-            testLinkList.insert(4);
-            testLinkList.insert(3);
+        LinkedList testLL = new LinkedList();
+        testLL.insert(2);
+        testLL.insert(3);
+        testLL.insert(1);
 
         ArrayList<Integer> testArray = new ArrayList<>();
+            testArray.add(1);
             testArray.add(3);
-            testArray.add(4);
-            testArray.add(5);
-        assertEquals("print returns an ArrayList containing the inserted values", testArray, testLinkList.print());
+            testArray.add(2);
+        assertEquals("print returns an ArrayList containing the inserted values", testArray, testLL.print());
     }
 
     @Test
     public void testAppend() {
-        LinkedList testLinkList = new LinkedList();
-        testLinkList.insert(2);
-        testLinkList.insert(3);
-        testLinkList.insert(1);
-        testLinkList.append(5);
-
-//        assertFalse("should include 5", true, testLinkList.includes(5));
-        assertTrue("includes 5", true, testLinkList.includes(5));
+        LinkedList testLL = new LinkedList();
+        testLL.insert(2);
+        testLL.insert(3);
+        testLL.insert(1);
+        testLL.append(5);
+        assertTrue("includes 5", testLL.includes(5));
     }
 
     @Test
@@ -68,17 +66,27 @@ public class LinkedListTest {
         }
         System.out.println(testLL);
         assertEquals("should be 4", 4, length);
-        assertEquals("addBefore returns info for a node added BEFORE the specified value in the linked list", true, testLL.includes(5));
         assertEquals("should be 5", 5, testLL.head.next.value);
     }
 
-//    @Test
-//    public void testAddAfter() {
-//        LinkedList testLL = new LinkedList();
-//            testLL.insert(2);
-//            testLL.insert(3);
-//            testLL.insert(1);
-//            testLL.addAfter(3,5);
-//        assertTrue("addAfter returns info for a node added AFTER the specified value in the linked list", testLL.addAfter(3, 5));
-//    }
+    @Test
+    public void testAddAfter() {
+        LinkedList testLL = new LinkedList();
+        testLL.insert(2);
+        testLL.insert(5);
+        testLL.insert(3);
+        testLL.insert(1);
+        assertTrue("includes 5", testLL.includes(5));
+    }
+
+    @Test
+    public void testReturnValueAtK() {
+        LinkedList testLL = new LinkedList();
+        testLL.insert(2);
+        testLL.insert(5);
+        testLL.insert(3);
+        testLL.insert(1);
+        assertEquals("returnValueAtK returns a value at the deltaK location", true, testLL.includes( 5));
+
+    }
 }
