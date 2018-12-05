@@ -30,14 +30,14 @@ public class LinkedListTest {
     @Test
     public void testPrint() {
         LinkedList testLinkList = new LinkedList();
-            testLinkList.insert(5);
-            testLinkList.insert(4);
+            testLinkList.insert(2);
             testLinkList.insert(3);
+            testLinkList.insert(1);
 
         ArrayList<Integer> testArray = new ArrayList<>();
+            testArray.add(2);
             testArray.add(3);
-            testArray.add(4);
-            testArray.add(5);
+            testArray.add(1);
         assertEquals("print returns an ArrayList containing the inserted values", testArray, testLinkList.print());
     }
 

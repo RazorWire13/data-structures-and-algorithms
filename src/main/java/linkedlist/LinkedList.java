@@ -9,7 +9,12 @@ public class LinkedList {
         testLinkList.insert(2);
         testLinkList.insert(3);
         testLinkList.insert(1);
-        testLinkList.append(5);
+
+        testLinkList.addBefore(3,5);
+
+        System.out.println("LL includes 3 = " + testLinkList.includes(3));
+        System.out.println("LL includes 5 = " + testLinkList.includes(5));
+//        testLinkList.append(5);
         testLinkList.print();
     }
 
@@ -19,6 +24,7 @@ public class LinkedList {
     public LinkedList() {
         this.head = null;
         this.current = null;
+
     }
 
     public void insert(int value) {
@@ -38,41 +44,52 @@ public class LinkedList {
 
     public List<Integer> print() {
         current = head;
+        Node prevNode = current;
         ArrayList<Integer> nodeValues = new ArrayList<>();
+        ArrayList<Integer> prevNodeValues = new ArrayList<>();
+
         while (current != null) {
             nodeValues.add(current.value);
-            System.out.println(current.value + " ");
+            prevNodeValues.add(current.value);
+            prevNode = current;
             current = current.next;
+            System.out.println(prevNode);
+
         }
+        System.out.println("The current values in the LL are: " + nodeValues);
+        System.out.println("The previous values in the LL are: " + prevNodeValues);
+
         return nodeValues;
     }
 
-    public void append(int value) {
+    public void append(int newNodeValue) {
         current = head;
+        Node prevNode = current;
         while (current != null) {
+
             current = current.next;
+            if (current.next == null) {
+                current = new Node(newNodeValue, null);
+            }
         }
-        current = new Node(value, null);
-        System.out.println(current);
     }
 
-    public void addBefore(int value, int newValue) {
-        while (current != null) {
-            if (current.next.value == value) {
-                current = new Node (newValue, current.next);
+    public void addBefore(int targetValue, int newNodeValue) {
+        current = head;
+        while (current.next != null) {
+            if (current.next.value == targetValue) {
+                current = new Node (newNodeValue, current.next);
             }
             current = current.next;
         }
-        System.out.println(current);
     }
 
-    public void addAfter(int value, int newValue ) {
-        while (current != null) {
-            if (current.value == value) {
-                current.next = new Node (newValue, current.next);
+    public void addAfter(int targetValue, int newNodeValue) {
+        while (current.next != null) {
+            if (current.value == targetValue) {
+                current.next = new Node (newNodeValue, current.next);
             }
             current = current.next;
         }
-        System.out.println(current.next);
     }
 }
