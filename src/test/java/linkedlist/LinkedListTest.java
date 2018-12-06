@@ -89,4 +89,18 @@ public class LinkedListTest {
         assertEquals("returnValueAtK returns a value at the deltaK location", true, testLL.includes( 5));
 
     }
+
+    @Test
+    public void testMergeLists() {
+        LinkedList testOne = new LinkedList();
+        LinkedList testTwo = new LinkedList();
+        testOne.insert(5);
+        testOne.insert(3);
+        testOne.insert(1);
+        testTwo.insert(6);
+        testTwo.insert(4);
+        testTwo.insert(2);
+        assertEquals("mergeList merges two LL into one. length should be 6", 6, size());
+
+    }
 }

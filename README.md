@@ -12,3 +12,4 @@
 * [Challenge 5: Linked List Data Structure](./readmes/linkedlist.md)
 * [Challenge 6: Linked List Insertions](./readmes/ll_insertions.md)
 * [Challenge 7: Return the Kth Value From the End of a Linked List](./readmes/ll_kth_from_end.md)
+* [Challenge 8: Merge two Linked Lists](./readmes/ll_merge.md)
