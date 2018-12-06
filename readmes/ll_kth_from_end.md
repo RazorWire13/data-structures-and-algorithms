@@ -8,7 +8,7 @@ Return the node’s value that is k from the end of the linked list.
 You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges.
 
 ## Approach & Efficiency
-Big O for linked lists in this case will be O(2n) Time. Once to iterate for size of list and another to insert.
+Big O for linked lists in this case will be O(n) Time. Once to iterate for size of list and another to insert.
 
 ## Solution
 ![Code Challenge 7](../assets/401-cc7-wb.JPG)

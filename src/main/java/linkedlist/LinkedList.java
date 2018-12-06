@@ -1,6 +1,7 @@
 package linkedlist;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LinkedList {
 
@@ -19,15 +20,31 @@ public class LinkedList {
         System.out.println("LL includes 5 = " + testLinkList.includes(5));
         testLinkList.print();
         System.out.println(testLinkList.returnValueAtK(1));
+
+        LinkedList testOne = new LinkedList();
+        LinkedList testTwo = new LinkedList();
+        testOne.insert(5);
+        testOne.insert(3);
+        testOne.insert(1);
+        testTwo.insert(6);
+        testTwo.insert(4);
+        testTwo.insert(2);
+        testOne.print();
+        testTwo.print();
+        mergeLists(testOne, testTwo).print();
+
     }
 
     protected Node head;
     protected Node current;
+    protected Node leader;
+    protected Node follow;
 
     public LinkedList() {
         this.head = null;
         this.current = null;
-
+        this.leader = null;
+        this.follow = null;
     }
 
     public void insert(int value) {
@@ -114,5 +131,31 @@ public class LinkedList {
             current = current.next;
         }
         return -1;
+    }
+
+    public static LinkedList mergeLists(LinkedList one, LinkedList two) {
+        one.leader = one.head.next;
+        one.follow = one.head;
+        two.current = two.head;
+        if(one.head == null) {
+            return two;
+        }
+        if(two.head == null) {
+            return one;
+        }
+        while (one.leader != null) {
+            two.head = two.current.next;
+            one.follow.next = two.current;
+            two.current.next = one.leader;
+            if (two.head == null) {
+                return one;
+            }
+            two.current = two.head;
+            one.follow = one.leader;
+            one.leader = one.leader.next;
+        }
+        one.follow.next = two.current;
+        one.print();
+        return one;
     }
 }
