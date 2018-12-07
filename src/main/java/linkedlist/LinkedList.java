@@ -7,14 +7,13 @@ public class LinkedList {
 
     public static void main(String[] args) {
         LinkedList testLinkList = new LinkedList();
-        testLinkList.insert(2);
+        testLinkList.insert(5);
         testLinkList.insert(3);
         testLinkList.insert(1);
-//        testLinkList.append(5);
 
-//        testLinkList.addBefore(3,5);
-        testLinkList.addAfter(3,5);
-
+        testLinkList.append(6);
+        testLinkList.addBefore(3,2);
+        testLinkList.addAfter(3,4);
 
         System.out.println("LL includes 3 = " + testLinkList.includes(3));
         System.out.println("LL includes 5 = " + testLinkList.includes(5));
@@ -47,10 +46,12 @@ public class LinkedList {
         this.follow = null;
     }
 
+    // inserts new node at the beginning of LL
     public void insert(int value) {
         head = new Node(value, head);
     }
 
+    // checks to see if a specified value is in a LL
     public boolean includes(int value) {
         current = head;
         while (current != null) {
@@ -62,6 +63,7 @@ public class LinkedList {
         return false;
     }
 
+    // prints out a list of values in a LL
     public List<Integer> print() {
         current = head;
         ArrayList<Integer> nodeValues = new ArrayList<>();
@@ -73,6 +75,7 @@ public class LinkedList {
         return nodeValues;
     }
 
+    // adds a new node to the end of a LL
     public void append(int newNodeValue) {
         current = head;
         while (current != null) {
@@ -85,6 +88,7 @@ public class LinkedList {
         }
     }
 
+    // adds a new node immediately before a specified existing node in a LL
     public void addBefore(int targetValue, int newNodeValue) {
         current = head;
         while (current != null) {
@@ -97,6 +101,7 @@ public class LinkedList {
         }
     }
 
+    // adds a new node immediately after a specified existing node in a LL
     public void addAfter(int targetValue, int newNodeValue) {
         current = head;
         while (current != null) {
@@ -109,6 +114,7 @@ public class LinkedList {
         }
     }
 
+    // returns the value of a node that is 'k' distance from the end of a LL
     public int returnValueAtK(int valueK) {
         int sizeCount = 0;
         current = head;
@@ -133,6 +139,7 @@ public class LinkedList {
         return -1;
     }
 
+    // merges two lists by 'zippering' them together
     public static LinkedList mergeLists(LinkedList one, LinkedList two) {
         one.leader = one.head.next;
         one.follow = one.head;
