@@ -14,3 +14,6 @@
 * [Challenge 7: Return the Kth Value From the End of a Linked List](./readmes/ll_kth_from_end.md)
 * [Challenge 8: Merge two Linked Lists](./readmes/ll_merge.md)
 * [Challenge 9: Peer Interview Whiteboard (Reverse LL / Palindrome LL Validation)](./readmes/palindrome.md)
+
+## Week 3
+* [Challenge 10: Stacks and Queues](./readmes/stacks_and_queues.md)
