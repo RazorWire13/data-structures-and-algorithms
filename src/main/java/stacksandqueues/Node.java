@@ -1,4 +1,4 @@
-package linkedlist;
+package stacksandqueues;
 
 public class Node {
     int value;
@@ -8,5 +8,4 @@ public class Node {
         this.value = value;
         this.next = next;
     }
-
 }
