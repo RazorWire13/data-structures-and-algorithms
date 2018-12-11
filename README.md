@@ -16,4 +16,6 @@
 * [Challenge 9: Peer Interview Whiteboard (Reverse LL / Palindrome LL Validation)](./readmes/palindrome.md)
 
 ## Week 3
+
 * [Challenge 10: Stacks and Queues](./readmes/stacks_and_queues.md)
+* [Challenge 11: PseudoQueue Using Two Stacks](./readmes/pseudoqueue.md)

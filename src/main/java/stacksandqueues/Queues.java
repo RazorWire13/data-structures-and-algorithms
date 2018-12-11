@@ -1,9 +1,9 @@
 package stacksandqueues;
 
-public class Queues {
+public class Queues<T> {
 
-    protected Node front;
-    protected Node rear;
+    protected Node<T> front;
+    protected Node<T> rear;
 
     public static void main(String[] args) {
         Queues queue = new Queues();
@@ -22,29 +22,35 @@ public class Queues {
     }
 
     // enqueue takes a value as an argument and adds a new node with that value to the back of the queue
-    public void enqueue(int value) {
-        Node node = new Node(value);
+    public void enqueue(T value) {
+        Node<T> node = new Node(value);
         if (this.front == null) {
             this.front = node;
             this.rear = node;
         }
-        rear.next = node;
-        rear = node;
+        this.rear.next = node;
+        this.rear = node;
     }
 
     // dequeue removes the node from the front of the queue, and returns the node
-    public int dequeue() {
-        Node temp = this.front;
+    public T dequeue() {
+        if (this.front == null) {
+            return null;
+        }
+        Node<T> temp = this.front;
         this.front = this.front.next;
+        if (this.front == null) {
+            this.rear = null;
+        }
         temp.next = null;
-        return temp.value;
+        return (T)temp;
     }
 
     // returns the node located in the front of the queue
-    public int peek() {
-        if (front != null) {
-            return front.value;
+    public T peek() {
+        if (this.front != null) {
+            return this.front.value;
         }
-        return -1;
+        return null;
     }
 }
