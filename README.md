@@ -19,3 +19,6 @@
 
 * [Challenge 10: Stacks and Queues](./readmes/stacks_and_queues.md)
 * [Challenge 11: PseudoQueue Using Two Stacks](./readmes/pseudoqueue.md)
+* [Challenge 12: FIFO Animal Shelter](./readmes/fifo_animal_shelter.md)
+
+
