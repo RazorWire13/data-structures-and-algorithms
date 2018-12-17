@@ -31,7 +31,6 @@ public class LinkedList {
         testOne.print();
         testTwo.print();
         mergeLists(testOne, testTwo).print();
-
     }
 
     protected Node head;
