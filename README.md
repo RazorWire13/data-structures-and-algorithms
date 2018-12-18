@@ -24,6 +24,8 @@
 * [Challenge 14: Peer Interview Whiteboard ( GetMax in Stack / EenieMeeine Elimination)]
 
 ## Week 4
-* [Challenge 15: Binary Trees](./readmes/binary_trees).md)
+
+* [Challenge 15: Binary Trees](./readmes/binary_trees.md)
+* [Challenge 16: FizzBuzz Tree](./readmes/fizzbuzztree.md)
 
 
