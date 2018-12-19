@@ -43,7 +43,7 @@ public class Queues<T> {
             this.rear = null;
         }
         temp.next = null;
-        return (T)temp;
+        return temp.value;
     }
 
     // returns the node located in the front of the queue

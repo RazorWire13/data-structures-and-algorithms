@@ -1,11 +1,11 @@
 package tree;
 
-public class Node<T> {
+public class TreeNode<T> {
     T value;
-    Node<T> left;
-    Node<T> right;
+    TreeNode<T> left;
+    TreeNode<T> right;
 
-    public Node(T value, Node<T> left, Node<T> right) {
+    public TreeNode(T value, TreeNode<T> left, TreeNode<T> right) {
         this.value = value;
         this.left = left;
         this.right = right;

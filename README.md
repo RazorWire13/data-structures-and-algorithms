@@ -27,5 +27,6 @@
 
 * [Challenge 15: Binary Trees](./readmes/binary_trees.md)
 * [Challenge 16: FizzBuzz Tree](./readmes/fizzbuzztree.md)
+* [Challenge 17: Breadth-First Traversal](./readmes/breadthfirst.md)
 
 
