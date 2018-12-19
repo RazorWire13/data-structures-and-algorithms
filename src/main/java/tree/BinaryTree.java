@@ -1,18 +1,22 @@
 package tree;
 
-import java.util.*;
+import stacksandqueues.Queues;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BinaryTree<T> {
 
-    Node<T> root;
+    TreeNode<T> root;
 
     public static void main(String[] args) {
         BinaryTree<String> testTree = new BinaryTree<>();
-        testTree.root = new Node("a", new Node("b", new Node("d", null, null), new Node("e", null, null)), new Node("c", new Node("f", null, null), new Node("g", null, null)));
+        testTree.root = new TreeNode("a", new TreeNode("b", new TreeNode("d", null, null), new TreeNode("e", null, null)), new TreeNode("c", new TreeNode("f", null, null), new TreeNode("g", null, null)));
 
         System.out.println(Arrays.toString(testTree.preOrder()));
         System.out.println(Arrays.toString(testTree.inOrder()));
         System.out.println(Arrays.toString(testTree.postOrder()));
+        testTree.breadthFirst(testTree.root);
 
     }
 
@@ -20,12 +24,12 @@ public class BinaryTree<T> {
         return BinaryTree.preOrderHelper(this.root).toArray();
     }
 
-    private static ArrayList<Node> preOrderHelper(Node root) {
+    private static ArrayList<TreeNode> preOrderHelper(TreeNode root) {
         if (root == null) {
-            return new ArrayList<Node>();
+            return new ArrayList<TreeNode>();
         } else {
-            ArrayList<Node> left = preOrderHelper(root.left);
-            ArrayList<Node> right = preOrderHelper(root.right);
+            ArrayList<TreeNode> left = preOrderHelper(root.left);
+            ArrayList<TreeNode> right = preOrderHelper(root.right);
             left.add(0, root);
             left.addAll(right);
             return left;
@@ -36,12 +40,12 @@ public class BinaryTree<T> {
         return BinaryTree.inOrderHelper(this.root).toArray();
     }
 
-    private static ArrayList<Node> inOrderHelper(Node root) {
+    private static ArrayList<TreeNode> inOrderHelper(TreeNode root) {
         if (root == null) {
-            return new ArrayList<Node>();
+            return new ArrayList<TreeNode>();
         } else {
-            ArrayList<Node> left = inOrderHelper(root.left);
-            ArrayList<Node> right = inOrderHelper(root.right);
+            ArrayList<TreeNode> left = inOrderHelper(root.left);
+            ArrayList<TreeNode> right = inOrderHelper(root.right);
             left.add(root);
             left.addAll(right);
             return left;
@@ -52,15 +56,29 @@ public class BinaryTree<T> {
         return BinaryTree.postOrderHelper(this.root).toArray();
     }
 
-    private static ArrayList<Node> postOrderHelper(Node root) {
+    private static ArrayList<TreeNode> postOrderHelper(TreeNode root) {
         if (root == null) {
-            return new ArrayList<Node>();
+            return new ArrayList<TreeNode>();
         } else {
-            ArrayList<Node> left = postOrderHelper(root.left);
-            ArrayList<Node> right = postOrderHelper(root.right);
+            ArrayList<TreeNode> left = postOrderHelper(root.left);
+            ArrayList<TreeNode> right = postOrderHelper(root.right);
             left.addAll(right);
             left.add(root);
             return left;
+        }
+    }
+
+    public void breadthFirst(TreeNode<T> node) {
+        if (node == null) {
+            System.out.println("Null root");
+        }
+        Queues<TreeNode> queue = new Queues<>();
+        queue.enqueue(node);
+        while (queue.peek() != null) {
+            TreeNode<T> front = queue.dequeue();
+            System.out.println(front.value);
+            if (front.left != null) queue.enqueue(front.left);
+            if (front.right != null) queue.enqueue(front.right);
         }
     }
 
