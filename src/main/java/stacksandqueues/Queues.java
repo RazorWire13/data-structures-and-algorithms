@@ -27,9 +27,10 @@ public class Queues<T> {
         if (this.front == null) {
             this.front = node;
             this.rear = node;
+        } else {
+            this.rear.next = node;
+            this.rear = node;
         }
-        this.rear.next = node;
-        this.rear = node;
     }
 
     // dequeue removes the node from the front of the queue, and returns the node
