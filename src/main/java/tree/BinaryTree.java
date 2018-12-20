@@ -13,11 +13,15 @@ public class BinaryTree<T> {
         BinaryTree<String> testTree = new BinaryTree<>();
         testTree.root = new TreeNode("a", new TreeNode("b", new TreeNode("d", null, null), new TreeNode("e", null, null)), new TreeNode("c", new TreeNode("f", null, null), new TreeNode("g", null, null)));
 
+        BinaryTree<Integer> maxTree = new BinaryTree<>();
+        maxTree.root = new TreeNode(8, new TreeNode(2, new TreeNode(6, null, null), new TreeNode(15, null, null)), new TreeNode(4, new TreeNode(21, null, null), new TreeNode(9, null, null)));
+
         System.out.println(Arrays.toString(testTree.preOrder()));
         System.out.println(Arrays.toString(testTree.inOrder()));
         System.out.println(Arrays.toString(testTree.postOrder()));
         testTree.breadthFirst(testTree.root);
-
+        System.out.println(findMaxValue(maxTree));
+      ;
     }
 
     public Object[] preOrder() {
@@ -80,6 +84,31 @@ public class BinaryTree<T> {
             if (front.left != null) queue.enqueue(front.left);
             if (front.right != null) queue.enqueue(front.right);
         }
+    }
+
+    public static int findMaxValue(BinaryTree tree) throws IllegalStateException {
+        if(tree.root == null) {
+            throw new IllegalStateException();
+        }
+        return findMaxHelper(tree.root);
+    }
+
+    private static int findMaxHelper(TreeNode root) {
+        int max = (int)root.value;
+        if(root.left != null) {
+            max = max(max, findMaxHelper(root.left));
+        }
+        if(root.right != null) {
+            max = max(max, findMaxHelper(root.right));
+        }
+        return max;
+    }
+
+    private static int max(int a, int b) {
+        if (a > b) {
+            return a;
+        }
+        return b;
     }
 
     public String toString() {
