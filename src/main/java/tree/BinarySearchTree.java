@@ -3,12 +3,13 @@ package tree;
 public class BinarySearchTree<T> extends BinaryTree {
 
 //    public static void main(String[] args) {
-//        BinaryTree testTree = new BinaryTree();
+//        BinaryTree<String> testTree = new BinaryTree<>();
+//        testTree.root = new TreeNode("a", new TreeNode("b", new TreeNode("d", null, null), new TreeNode("e", null, null)), new TreeNode("c", new TreeNode("f", null, null), new TreeNode("g", null, null)));
 //
 //    }
 //
-//    protected TreeNode<T> root;
-//    protected TreeNode<T> current;
+//    protected TreeNode root;
+//    protected TreeNode current;
 //
 //    //
 //    public void add(int value) {

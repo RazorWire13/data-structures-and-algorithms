@@ -21,12 +21,14 @@
 * [Challenge 11: PseudoQueue Using Two Stacks](./readmes/pseudoqueue.md)
 * [Challenge 12: FIFO Animal Shelter](./readmes/fifo_animal_shelter.md)
 * [Challenge 13: Multi Bracket Validation](./readmes/multibracketvalidation.md)
-* [Challenge 14: Peer Interview Whiteboard ( GetMax in Stack / EenieMeeine Elimination)]
+* Challenge 14: Peer Interview Whiteboard (GetMax in Stack / EenieMeeine Elimination)
 
 ## Week 4
 
 * [Challenge 15: Binary Trees](./readmes/binary_trees.md)
 * [Challenge 16: FizzBuzz Tree](./readmes/fizzbuzztree.md)
 * [Challenge 17: Breadth-First Traversal](./readmes/breadthfirst.md)
+* [Challenge 18: Find Max Value of Binary Tree](./readmes/findmaxvalue.md)
+
 
 
