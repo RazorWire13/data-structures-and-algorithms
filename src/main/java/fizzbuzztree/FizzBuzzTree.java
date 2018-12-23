@@ -1,22 +1,34 @@
 package fizzbuzztree;
 
-public class FizzBuzzTree<T> {
-//
-//
-//    public static Object[] fizzBuzzHelper(TreeNode root) {
-//        if (root == null) {
-//            return null;
-//        } else {
-//            fizzBuzzHelper(root.left);
-//            fizzBuzzHelper(root.right);
-//        }
-//
-//        if ((root.value % 3) == 0 && (node.value % 5) == 0) {
-//            root.value = "FizzBuzz";
-//        } else if ((root.value % 5) == 0) {
-//            root.value = "Buzz";
-//        } else if ((node.value % 3) == 0) {
-//            root.value = "Fizz";
-//        }
-//    }
+import tree.BinaryTree;
+import tree.TreeNode;
+
+public class FizzBuzzTree {
+
+    public static BinaryTree<Object> fizzBuzzTree(BinaryTree<Object> tree) {
+        fizzBuzzSearch(tree.root);
+            return tree;
+    }
+
+    public static void fizzBuzzSearch(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        if (root.left != null) {
+            fizzBuzzSearch(root.left);
+        }
+        if (root.right != null) {
+            fizzBuzzSearch(root.right);
+        }
+
+        if ((int) root.value % 5 == 0) {
+            if ((int) root.value % 3 == 0) {
+            root.value = "FizzBuzz";
+        } else {
+                root.value = "Buzz";
+            }
+        } else if ((int)root.value % 3 == 0) {
+            root.value = "Fizz";
+        }
+    }
 }

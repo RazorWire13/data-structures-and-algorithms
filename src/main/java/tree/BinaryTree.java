@@ -7,14 +7,30 @@ import java.util.Arrays;
 
 public class BinaryTree<T> {
 
-    TreeNode<T> root;
+    public TreeNode<T> root;
+
+    public BinaryTree() {
+        this.root = null;
+    }
 
     public static void main(String[] args) {
         BinaryTree<String> testTree = new BinaryTree<>();
-        testTree.root = new TreeNode("a", new TreeNode("b", new TreeNode("d", null, null), new TreeNode("e", null, null)), new TreeNode("c", new TreeNode("f", null, null), new TreeNode("g", null, null)));
+        testTree.root = new TreeNode("a",
+                new TreeNode("b",
+                        new TreeNode("d"),
+                        new TreeNode("e")),
+                new TreeNode("c",
+                        new TreeNode("f"),
+                        new TreeNode("g")));
 
         BinaryTree<Integer> maxTree = new BinaryTree<>();
-        maxTree.root = new TreeNode(8, new TreeNode(2, new TreeNode(6, null, null), new TreeNode(15, null, null)), new TreeNode(4, new TreeNode(21, null, null), new TreeNode(9, null, null)));
+        maxTree.root = new TreeNode(8,
+                new TreeNode(2,
+                        new TreeNode(6),
+                        new TreeNode(15)),
+                new TreeNode(4,
+                        new TreeNode(21),
+                        new TreeNode(9)));
 
         System.out.println(Arrays.toString(testTree.preOrder()));
         System.out.println(Arrays.toString(testTree.inOrder()));
@@ -23,6 +39,8 @@ public class BinaryTree<T> {
         System.out.println(findMaxValue(maxTree));
       ;
     }
+
+    // PRE ORDER TRAVERSAL
 
     public Object[] preOrder() {
         return BinaryTree.preOrderHelper(this.root).toArray();
@@ -40,6 +58,8 @@ public class BinaryTree<T> {
         }
     }
 
+    // IN ORDER TRAVERSAL
+
     public Object[] inOrder() {
         return BinaryTree.inOrderHelper(this.root).toArray();
     }
@@ -55,6 +75,8 @@ public class BinaryTree<T> {
             return left;
         }
     }
+
+    // POST ORDER TRAVERSAL
 
     public Object[] postOrder() {
         return BinaryTree.postOrderHelper(this.root).toArray();
@@ -72,6 +94,8 @@ public class BinaryTree<T> {
         }
     }
 
+    // BREADTH FIRST TRAVERSAL
+
     public void breadthFirst(TreeNode<T> node) {
         if (node == null) {
             System.out.println("Null root");
@@ -85,6 +109,8 @@ public class BinaryTree<T> {
             if (front.right != null) queue.enqueue(front.right);
         }
     }
+
+    // FIND MAX VALUE
 
     public static int findMaxValue(BinaryTree tree) throws IllegalStateException {
         if(tree.root == null) {
