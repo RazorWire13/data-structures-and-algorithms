@@ -19,15 +19,25 @@ public class BinarySearchTree extends BinaryTree {
         super();
     }
 
-    public TreeNode add(TreeNode<Integer> node, Integer value) {
+
+    // needed some baeldung love to get through this
+
+    public void add(Integer value) {
+        if (this.root == null) {
+            this.root = new TreeNode<>(value);
+        } else {
+            addHelper(root, value);
+        }
+    }
+    public TreeNode addHelper(TreeNode<Integer> node, Integer value) {
         if (node == null) {
-            return new TreeNode<>(value);
+            return new TreeNode<>(value, null, null);
         }
         if (value < node.value) {
-            node.left = add(node.left, value);
+            node.left = addHelper(node.left, value);
 
         } else if (value > node.value) {
-            node.right = add(node.right, value);
+            node.right = addHelper(node.right, value);
         } else {
             return node;
         }

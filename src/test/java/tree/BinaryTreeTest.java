@@ -1,104 +1,86 @@
 package tree;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static tree.BinaryTree.findMaxValue;
 
 public class BinaryTreeTest {
+    BinaryTree<String> streamTree = new BinaryTree<>();
+    private final ByteArrayOutputStream output = new ByteArrayOutputStream();
+    private final PrintStream printOut = System.out;
 
-//    // PRE ORDER TESTS
-//
-//    @Test
-//    public void preOrderTest() {
-//        BinaryTree<TreeNode> testTree = new BinaryTree<>();
-//        testTree.root = new TreeNode("a",
-//                new TreeNode("b",
-//                        new TreeNode("d", null, null),
-//                        new TreeNode("e", null, null)),
-//                new TreeNode("c",
-//                        new TreeNode("f", null, null),
-//                        new TreeNode("g", null, null)));
-//        Object[] expected = {"a", "b", "d", "e", "c", "f", "g"};
-//        assertArrayEquals("preOrder returns root-> left-> right branches", expected, testTree.preOrder());
-//    }
-//
-//    @Test
-//    public void preOrderTest_UnevenTree() {
-//        BinaryTree<String> testTree = new BinaryTree<>();
-//        testTree.root = new TreeNode("a",
-//                new TreeNode("b",
-//                        new TreeNode("d", null, null),
-//                        new TreeNode("e", null, null)),
-//                new TreeNode("c",
-//                        new TreeNode("f", null, null),
-//                        null));
-//        String[] expected = {"a", "b", "d", "e", "c", "f"};
-//        assertArrayEquals("preOrder returns root-> left-> right branches", expected, testTree.preOrder());
-//    }
-//
-//    // IN ORDER TESTS
-//
-//    @Test
-//    public void inOrderTest() {
-//        BinaryTree<String> testTree = new BinaryTree<>();
-//        testTree.root = new TreeNode("a",
-//                new TreeNode("b",
-//                        new TreeNode("d", null, null),
-//                        new TreeNode("e", null, null)),
-//                new TreeNode("c",
-//                        new TreeNode("f", null, null),
-//                        new TreeNode("g", null, null)));
-//        String[] expected = {"d", "b", "e", "a", "f", "c", "g"};
-//        assertArrayEquals("inOrder returns left-> root-> right branches", expected, testTree.inOrder());
-//    }
-//
-//    @Test
-//    public void inOrderTest_UnevenTree() {
-//        BinaryTree<String> testTree = new BinaryTree<>();
-//        testTree.root = new TreeNode("a",
-//                new TreeNode("b",
-//                        new TreeNode("d", null, null),
-//                        new TreeNode("e", null, null)),
-//                new TreeNode("c",
-//                        new TreeNode("f", null, null),
-//                        null));
-//        String[] expected = {"a", "b", "d", "e", "c", "f"};
-//        assertArrayEquals("preOrder returns root-> left-> right branches", expected, testTree.inOrder());
-//    }
-//
-//    // POST ORDER TESTS
-//
-//    @Test
-//    public void postOrderTest() {
-//        BinaryTree<String> testTree = new BinaryTree<>();
-//        testTree.root = new TreeNode("a",
-//                new TreeNode("b",
-//                        new TreeNode("d", null, null),
-//                        new TreeNode("e", null, null)),
-//                new TreeNode("c",
-//                        new TreeNode("f", null, null),
-//                        new TreeNode("g", null, null)));
-//        String[] expected = {"d", "e", "b", "f", "g", "c", "a"};
-//        assertArrayEquals("postOrder returns left-> right-> root branches", expected, testTree.postOrder());
-//    }
-//
-//    @Test
-//    public void postOrderTest_UnevenTree() {
-//        BinaryTree<String> testTree = new BinaryTree<>();
-//        testTree.root = new TreeNode("a",
-//                new TreeNode("b",
-//                        new TreeNode("d", null, null),
-//                        new TreeNode("e", null, null)),
-//                new TreeNode("c",
-//                        new TreeNode("f", null, null),
-//                        null));
-//        String[] expected = {"a", "b", "d", "e", "c", "f"};
-//        assertArrayEquals("preOrder returns root-> left-> right branches", expected, testTree.postOrder());
-//    }
+    @Before
+    public void byteStreams() {
+        System.setOut(new PrintStream(output));
+    }
+
+    @After
+    public void reset() {
+        System.setOut(printOut);
+    }
+
+    // PRE ORDER TESTS
+    @Test
+    public void preOrderTest() {
+        BinaryTree<TreeNode> testTree = new BinaryTree<>();
+        testTree.root = new TreeNode("a",
+                new TreeNode("b",
+                        new TreeNode("d", null, null),
+                        new TreeNode("e", null, null)),
+                new TreeNode("c",
+                        new TreeNode("f", null, null),
+                        new TreeNode("g", null, null)));
+        ArrayList<TreeNode> preOrderList = BinaryTree.preOrder(testTree.root);
+        assertEquals("preOrder has a size of 7", 7, preOrderList.size());
+        assertEquals("preOrder root position has a value of 'a'", "a",preOrderList.get(0).value);
+        assertEquals("preOrder first left position has a value of 'b'", "b",preOrderList.get(1).value);
+        assertEquals("preOrder first right position has a value of 'c'", "c",preOrderList.get(4).value);
+    }
+
+    // IN ORDER TESTS
+    @Test
+    public void inOrderTest() {
+        BinaryTree<TreeNode> testTree = new BinaryTree<>();
+        testTree.root = new TreeNode("a",
+                new TreeNode("b",
+                        new TreeNode("d", null, null),
+                        new TreeNode("e", null, null)),
+                new TreeNode("c",
+                        new TreeNode("f", null, null),
+                        new TreeNode("g", null, null)));
+        ArrayList<TreeNode> inOrderList = BinaryTree.inOrder(testTree.root);
+        assertEquals("inOrder has a size of 7", 7, inOrderList.size());
+        assertEquals("inOrder first left position has a value of 'd'", "d",inOrderList.get(0).value);
+        assertEquals("inOrder root position has a value of 'a'", "a",inOrderList.get(3).value);
+        assertEquals("inOrder first right position has a value of 'f'", "f",inOrderList.get(4).value);
+    }
+
+    // POST ORDER TESTS
+    @Test
+    public void postOrderTest() {
+        BinaryTree<TreeNode> testTree = new BinaryTree<>();
+        testTree.root = new TreeNode("a",
+                new TreeNode("b",
+                        new TreeNode("d", null, null),
+                        new TreeNode("e", null, null)),
+                new TreeNode("c",
+                        new TreeNode("f", null, null),
+                        new TreeNode("g", null, null)));
+        ArrayList<TreeNode> postOrderList = BinaryTree.postOrder(testTree.root);
+        assertEquals("postOrder has a size of 7", 7, postOrderList.size());
+        assertEquals("postOrder first left position has a value of 'd'", "d", postOrderList.get(0).value);
+        assertEquals("postOrder first right position has a value of 'f'", "f", postOrderList.get(3).value);
+        assertEquals("postOrder root position has a value of 'a'", "a", postOrderList.get(6).value);
+    }
 
     // BREADTH FIRST TESTS
-
 //    @Test
 //    public void breadthFirstTest() {
 //        BinaryTree<String> testTree = new BinaryTree<>();
@@ -108,12 +90,12 @@ public class BinaryTreeTest {
 //                        new TreeNode("e", null, null)),
 //                new TreeNode("c",
 //                        new TreeNode("f", null, null),
-//                        new TreeNode("g", null, null)))
-//        assertNotNull("breadthFirst the expected test", testTree.breadthFirst(testTree.root));
+//                        new TreeNode("g", null, null)));
+//        testTree.breadthFirst(streamTree);
+//        assertEquals("The output should match expected", "a\nb\nc\nd\ne\nf\n", output.toString());
 //    }
 
     // MAX VALUE TESTS
-
     @Test
     public void findMaxValueTest_Positives() {
         BinaryTree<Integer> maxTree = new BinaryTree<>();

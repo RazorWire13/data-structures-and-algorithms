@@ -3,7 +3,6 @@ package tree;
 import stacksandqueues.Queues;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class BinaryTree<T> {
 
@@ -32,26 +31,21 @@ public class BinaryTree<T> {
                         new TreeNode(21),
                         new TreeNode(9)));
 
-        System.out.println(Arrays.toString(testTree.preOrder()));
-        System.out.println(Arrays.toString(testTree.inOrder()));
-        System.out.println(Arrays.toString(testTree.postOrder()));
+        System.out.println(preOrder(testTree.root));
+        System.out.println(inOrder(testTree.root));
+        System.out.println(postOrder(testTree.root));
+
         testTree.breadthFirst(testTree.root);
         System.out.println(findMaxValue(maxTree));
-      ;
     }
 
     // PRE ORDER TRAVERSAL
-
-    public Object[] preOrder() {
-        return BinaryTree.preOrderHelper(this.root).toArray();
-    }
-
-    private static ArrayList<TreeNode> preOrderHelper(TreeNode root) {
+    public static ArrayList<TreeNode> preOrder(TreeNode root) {
         if (root == null) {
             return new ArrayList<TreeNode>();
         } else {
-            ArrayList<TreeNode> left = preOrderHelper(root.left);
-            ArrayList<TreeNode> right = preOrderHelper(root.right);
+            ArrayList<TreeNode> left = preOrder(root.left);
+            ArrayList<TreeNode> right = preOrder(root.right);
             left.add(0, root);
             left.addAll(right);
             return left;
@@ -59,17 +53,12 @@ public class BinaryTree<T> {
     }
 
     // IN ORDER TRAVERSAL
-
-    public Object[] inOrder() {
-        return BinaryTree.inOrderHelper(this.root).toArray();
-    }
-
-    private static ArrayList<TreeNode> inOrderHelper(TreeNode root) {
+    public static ArrayList<TreeNode> inOrder(TreeNode root) {
         if (root == null) {
             return new ArrayList<TreeNode>();
         } else {
-            ArrayList<TreeNode> left = inOrderHelper(root.left);
-            ArrayList<TreeNode> right = inOrderHelper(root.right);
+            ArrayList<TreeNode> left = inOrder(root.left);
+            ArrayList<TreeNode> right = inOrder(root.right);
             left.add(root);
             left.addAll(right);
             return left;
@@ -77,17 +66,12 @@ public class BinaryTree<T> {
     }
 
     // POST ORDER TRAVERSAL
-
-    public Object[] postOrder() {
-        return BinaryTree.postOrderHelper(this.root).toArray();
-    }
-
-    private static ArrayList<TreeNode> postOrderHelper(TreeNode root) {
+    public static ArrayList<TreeNode> postOrder(TreeNode root) {
         if (root == null) {
             return new ArrayList<TreeNode>();
         } else {
-            ArrayList<TreeNode> left = postOrderHelper(root.left);
-            ArrayList<TreeNode> right = postOrderHelper(root.right);
+            ArrayList<TreeNode> left = postOrder(root.left);
+            ArrayList<TreeNode> right = postOrder(root.right);
             left.addAll(right);
             left.add(root);
             return left;
@@ -95,7 +79,6 @@ public class BinaryTree<T> {
     }
 
     // BREADTH FIRST TRAVERSAL
-
     public void breadthFirst(TreeNode<T> node) {
         if (node == null) {
             System.out.println("Null root");
@@ -111,7 +94,6 @@ public class BinaryTree<T> {
     }
 
     // FIND MAX VALUE
-
     public static int findMaxValue(BinaryTree tree) throws IllegalStateException {
         if(tree.root == null) {
             throw new IllegalStateException();
