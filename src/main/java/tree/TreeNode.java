@@ -14,7 +14,9 @@ public class TreeNode<T> {
 
     //Creates a leaf node if just a value is passed in.
     public TreeNode(T value) {
-        this(value, null, null);
+        this.value = value;
+        this.left = null;
+        this.right = null;
     }
 
     public String toString() {

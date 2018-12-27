@@ -8,6 +8,21 @@ public class BinarySearchTreeTest {
 
     @Test
     public void addTest() {
+        BinarySearchTree testAddTree = new BinarySearchTree();
+        testAddTree.add(100);
+        testAddTree.add(50);
+        testAddTree.add(150);
+        testAddTree.add(25);
+        testAddTree.add(75);
+        testAddTree.add(125);
+        testAddTree.add(175);
+        assertEquals("root value equals 100", 100, testAddTree.root.value);
+        assertEquals("root.left value equals 50", 50, testAddTree.root.left.value);
+        assertEquals("root.right value equals 150", 150, testAddTree.root.right.value);
+        assertEquals("root.left.left value equals 100", 25, testAddTree.root.left.left.value);
+        assertEquals("root.left.right value equals 50", 75, testAddTree.root.left.right.value);
+        assertEquals("root.right.left value equals 125", 125, testAddTree.root.right.left.value);
+        assertEquals("root.right.right value equals 175", 175, testAddTree.root.right.right.value);
     }
 
     @Test

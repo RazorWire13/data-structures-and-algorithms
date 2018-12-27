@@ -30,5 +30,9 @@
 * [Challenge 17: Breadth-First Traversal](./readmes/breadthfirst.md)
 * [Challenge 18: Find Max Value of Binary Tree](./readmes/findmaxvalue.md)
 
+## Week 6
+* [Challenge 20: Graphs](./readmes/graphs.md)
+
+
 
 
