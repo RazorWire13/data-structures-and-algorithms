@@ -5,7 +5,7 @@ Implement basic functionality methods of a a 2d array - aka a Graph
 Implement a Graph that should be represented as an adjacency list and includes the following:
 
 `AddEdge()`
-* Adds a new vertice to the graphs
+* Adds a new vertex to the graphs
 * Include the ability to have a “weight”
 * Bring in both the parent node, and the new node to be added
 
@@ -30,3 +30,9 @@ O(n) Time and Space
   - [x] Code Challenge
   - [x] Write tests
   - [x] A-C-P and document
+
+### Reference Documents
+* During the course of this lab I referred to the following sites for instruction on building out this lab
+- https://www.baeldung.com/java-graphs
+- https://www.geeksforgeeks.org/graph-and-its-representations/
+- https://www.dreamincode.net/forums/topic/377473-graph-data-structure-tutorial/
