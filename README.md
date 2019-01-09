@@ -33,6 +33,7 @@
 ## Week 6
 * [Challenge 20: Graphs](./readmes/graphs.md)
 * [Challenge 26: Breadth First Graph Traversal](./readmes/breadth-first-graph.md)
+* [Challenge 27: Direct Flight Edges](./readmes/get-edge.md)
 
 
 

@@ -80,7 +80,13 @@ public class GraphTest {
         testGraph.addEdge(node4, node6, 1);
         assertEquals("should equal 6", 6, testGraph.size());
     }
-
-
-
+//    @Test
+//    public void breadthFirstTest() {
+//        Graph<String> testGraph = new Graph<>();
+//        Node<String> node1 = testGraph.addVertex("a");
+//        Node<String> node2 = testGraph.addVertex("b");
+//        Node<String> node3 = testGraph.addVertex("c");
+//        Node<String> node4 = testGraph.addVertex("d");
+//
+//
 }
