@@ -13,7 +13,7 @@
 * [Challenge 6: Linked List Insertions](./readmes/ll_insertions.md)
 * [Challenge 7: Return the Kth Value From the End of a Linked List](./readmes/ll_kth_from_end.md)
 * [Challenge 8: Merge two Linked Lists](./readmes/ll_merge.md)
-* [Challenge 9: Peer Interview Whiteboard (Reverse LL / Palindrome LL Validation)](./readmes/palindrome.md)
+* Challenge 9: Peer Interview Whiteboard (Reverse LL / Palindrome LL Validation)](./readmes/palindrome.md)
 
 ## Week 3
 
@@ -34,6 +34,7 @@
 * [Challenge 20: Graphs](./readmes/graphs.md)
 * [Challenge 26: Breadth First Graph Traversal](./readmes/breadth-first-graph.md)
 * [Challenge 27: Direct Flight Edges](./readmes/get-edge.md)
+* [Challenge 28: Depth First Graph Traversal](./readmes/depth-first-graph.md)
 
 
 

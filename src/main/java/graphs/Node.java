@@ -20,4 +20,8 @@ public class Node<T> {
         Edge<T> newEdge = new Edge(neighbor, weight);
         this.neighbors.add(newEdge);
     }
+
+    public String toString() {
+        return " " + this.value;
+    }
 }

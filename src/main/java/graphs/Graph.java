@@ -10,12 +10,27 @@ public class Graph<T> {
     }
 
     public static void main(String[] args) {
-        Graph<String> testGraph = new Graph<>();
-        Node<String> node1 = testGraph.addVertex("a");
-        Node<String> node2 = testGraph.addVertex("b");
-        Node<String> node3 = testGraph.addVertex("c");
-        testGraph.addEdge(node1, node2, 1);
-        testGraph.addEdge(node1, node3, 2);
+        Graph testGraph = new Graph<>();
+        Node nodeA = testGraph.addVertex("a");
+        Node nodeB = testGraph.addVertex("b");
+        Node nodeC = testGraph.addVertex("c");
+        Node nodeD = testGraph.addVertex("d");
+        Node nodeE = testGraph.addVertex("e");
+        Node nodeF = testGraph.addVertex("f");
+        Node nodeG = testGraph.addVertex("g");
+        Node nodeH = testGraph.addVertex("h");
+        testGraph.addEdge(nodeA, nodeD, 1);
+        testGraph.addEdge(nodeA, nodeB, 1);
+        testGraph.addEdge(nodeB, nodeC, 1);
+        testGraph.addEdge(nodeC, nodeG, 1);
+        testGraph.addEdge(nodeD, nodeF, 1);
+        testGraph.addEdge(nodeD, nodeE, 1);
+        testGraph.addEdge(nodeE, nodeH, 1);
+        testGraph.addEdge(nodeF, nodeH, 1);
+
+        System.out.println("Breadth-first: " + testGraph.breadthFirstTraversal(nodeA).toString());
+
+        System.out.println("Depth-first: " + testGraph.depthFirstTraversal(nodeA).toString());
     }
 
     public void addEdge(Node<T> node1, Node<T> node2, int weight) {
@@ -42,48 +57,57 @@ public class Graph<T> {
         return node.neighbors;
     }
 
-
-
-
-
     public int size() {
         return this.nodes.size();
     }
 
-//    public Set<Node> breadthFirstTraversal(Graph graph, Node<T> node) {
-//        List<Node> visited = new ArrayList<>();
-//        Set<Node> nodeList = graph.getNeighbors(node);
-//        for (Node node : nodeList) {
-//            visited = node.neighbors;
-//            for (Node node : visited) {
-//                if (!nodeList.contains(node)) {
-//                    nodeList.add(node);
-//                }
-//            }
-//        }
-//    }
+    public static Iterable<Node> breadthFirstTraversal(Node startNode) {
+        LinkedList<Node> answer = new LinkedList<>();
+        //keep track of nodes to visit
+        Queue<Node> nodesToVisit = new LinkedList<>();
+        nodesToVisit.add(startNode);
+        // keep track of visited nodes
+        HashSet<Node> visitedNodes = new HashSet<>();
+        visitedNodes.add(startNode);
 
-//    public static Iterable<Node> breadthFirstTraversal(Node startNode) {
-//        LinkedList<Node> answer = new LinkedList<>();
-//        //keep track of nodes to visit
-//        Queue<Node> nodesToVisit = new LinkedList<>();
-//        nodesToVisit.add(startNode);
-//        // keep track of visited nodes
-//        HashSet<Node> visitedNodes = new HashSet<>();
-//        visitedNodes.add(startNode);
-//
-//        while(!nodesToVisit.isEmpty()) {
-//            // take first ting out of queue
-//            // add its neighbors to the queue if they haven't been seen yet
-//            Node currentNode = nodesToVisit.poll();
-//            answer.add(currentNode);
-//            for (Edge neighbor : (Set<Edge>) currentNode.neighbors) {
-//                Node neighborNode = neighbor.node;
-//                if(!visitedNodes.contains(neighborNode)) {
-//                    nodesToVisit.add(neighborNode);
-//                    visitedNodes.add(neighborNode);
-//                }
-//            }
-//        }
-//    }
+        while(!nodesToVisit.isEmpty()) {
+            // take first ting out of queue
+            // add its neighbors to the queue if they haven't been seen yet
+            Node currentNode = nodesToVisit.poll();
+            answer.add(currentNode);
+            for (Edge neighbor : (Set<Edge>) currentNode.neighbors) {
+                Node neighborNode = neighbor.node;
+                if(!visitedNodes.contains(neighborNode)) {
+                    nodesToVisit.add(neighborNode);
+                    visitedNodes.add(neighborNode);
+                }
+            }
+        }
+        return answer;
+    }
+
+    public static Iterable<Node> depthFirstTraversal(Node startNode) {
+        LinkedList<Node> answer = new LinkedList<>();
+        //keep track of nodes to visit
+        Stack<Node> nodesToVisit = new Stack<>();
+        nodesToVisit.add(startNode);
+        // keep track of visited nodes
+        HashSet<Node> visitedNodes = new HashSet<>();
+        visitedNodes.add(startNode);
+
+        while(!nodesToVisit.isEmpty()) {
+            // take first ting out of queue
+            // add its neighbors to the queue if they haven't been seen yet
+            Node currentNode = nodesToVisit.pop();
+            answer.add(currentNode);
+            for (Edge neighbor : (Set<Edge>) currentNode.neighbors) {
+                Node neighborNode = neighbor.node;
+                if(!visitedNodes.contains(neighborNode)) {
+                    nodesToVisit.add(neighborNode);
+                    visitedNodes.add(neighborNode);
+                }
+            }
+        }
+        return answer;
+    }
 }

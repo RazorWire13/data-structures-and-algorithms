@@ -2,6 +2,9 @@ package graphs;
 
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.Assert.*;
 
 public class GraphTest {
@@ -11,47 +14,46 @@ public class GraphTest {
         Graph<String> testGraph = new Graph<>();
         Node<String> node1 = testGraph.addVertex("a");
         Node<String> node2 = testGraph.addVertex("b");
-        testGraph.addEdge(node1, node2,2);
+        testGraph.addEdge(node1, node2, 2);
     }
 
     @Test
     public void addVertexTest() {
-        Graph<String> testGraph = new Graph<>();
-        Node<String> node1 = testGraph.addVertex("a");
-        Node<String> node2 = testGraph.addVertex("b");
-        assertEquals("should contain a value of 'a'", "a", node1.value);
+        Graph testGraph = new Graph<>();
+        Node nodeA = testGraph.addVertex("a");
+        Node nodeB = testGraph.addVertex("b");
+        assertEquals("should contain a value of 'a'", "a", nodeA.value);
         assertEquals("size should be 2", 2, testGraph.size());
-        assertEquals("node returned equals expected", node1, testGraph.nodes.iterator().next());
+        assertEquals("node returned equals expected", nodeA, testGraph.nodes.iterator().next());
     }
 
     @Test
     public void getNodesTest() {
-        Graph<String> testGraph = new Graph<>();
-        Node<String> node1 = testGraph.addVertex("a");
-        Node<String> node2 = testGraph.addVertex("b");
-        Node<String> node3 = testGraph.addVertex("c");
+        Graph testGraph = new Graph<>();
+        Node nodeA = testGraph.addVertex("a");
+        Node nodeB = testGraph.addVertex("b");
+        Node nodeC = testGraph.addVertex("c");
         assertNotNull("not null", testGraph.getNodes());
 
     }
 
     @Test
     public void getNeighborsTest() {
-        Graph<String> testGraph = new Graph<>();
-        Node<String> node1 = testGraph.addVertex("a");
-        Node<String> node2 = testGraph.addVertex("b");
-        Node<String> node3 = testGraph.addVertex("c");
-        testGraph.addEdge(node1, node2, 1);
-        testGraph.addEdge(node1, node3, 2);
-        testGraph.getNeighbors(node1);
-
+        Graph testGraph = new Graph<>();
+        Node nodeA = testGraph.addVertex("a");
+        Node nodeB = testGraph.addVertex("b");
+        Node nodeC = testGraph.addVertex("c");
+        testGraph.addEdge(nodeA, nodeB, 1);
+        testGraph.addEdge(nodeA, nodeC, 2);
+        assertEquals("neighbors of nodeA should be nodeB and nodeC", "b, c", testGraph.getNeighbors(nodeA));
     }
 
     @Test
     public void sizeTest() {
-        Graph<String> testGraph = new Graph<>();
-        Node<String> node1 = testGraph.addVertex("a");
-        Node<String> node2 = testGraph.addVertex("b");
-        Node<String> node3 = testGraph.addVertex("c");
+        Graph testGraph = new Graph<>();
+        Node nodeA = testGraph.addVertex("a");
+        Node nodeB = testGraph.addVertex("b");
+        Node nodeC = testGraph.addVertex("c");
         assertEquals("should equal 3", 3, testGraph.size());
         assertNotEquals("should not equal 2", 2, testGraph.size());
     }
@@ -65,28 +67,65 @@ public class GraphTest {
 
     @Test
     public void breadthFirstTest() {
-        Graph<String> testGraph = new Graph<>();
-        Node<String> node1 = testGraph.addVertex("a");
-        Node<String> node2 = testGraph.addVertex("b");
-        Node<String> node3 = testGraph.addVertex("c");
-        Node<String> node4 = testGraph.addVertex("d");
-        Node<String> node5 = testGraph.addVertex("e");
-        Node<String> node6 = testGraph.addVertex("f");
-        testGraph.addEdge(node1, node2, 1);
-        testGraph.addEdge(node2, node3, 1);
-        testGraph.addEdge(node2, node4, 1);
-        testGraph.addEdge(node3, node5, 1);
-        testGraph.addEdge(node3, node6, 1);
-        testGraph.addEdge(node4, node6, 1);
-        assertEquals("should equal 6", 6, testGraph.size());
+        Graph testGraph = new Graph<>();
+        Node nodeA = testGraph.addVertex("a");
+        Node nodeB = testGraph.addVertex("b");
+        Node nodeC = testGraph.addVertex("c");
+        Node nodeD = testGraph.addVertex("d");
+        Node nodeE = testGraph.addVertex("e");
+        Node nodeF = testGraph.addVertex("f");
+        Node nodeG = testGraph.addVertex("g");
+        Node nodeH = testGraph.addVertex("h");
+        testGraph.addEdge(nodeA, nodeD, 1);
+        testGraph.addEdge(nodeA, nodeB, 1);
+        testGraph.addEdge(nodeB, nodeC, 1);
+        testGraph.addEdge(nodeC, nodeG, 1);
+        testGraph.addEdge(nodeD, nodeF, 1);
+        testGraph.addEdge(nodeD, nodeE, 1);
+        testGraph.addEdge(nodeE, nodeH, 1);
+        testGraph.addEdge(nodeF, nodeH, 1);
+        Set<String> expected = new HashSet<>();
+        expected.add("a");
+        expected.add("b");
+        expected.add("c");
+        expected.add("d");
+        expected.add("e");
+        expected.add("f");
+        expected.add("g");
+        expected.add("h");
+        assertEquals("should equal 8", 8, testGraph.size());
+        assertEquals("actual should equal expected", expected, testGraph.breadthFirstTraversal(nodeA));
     }
-//    @Test
-//    public void breadthFirstTest() {
-//        Graph<String> testGraph = new Graph<>();
-//        Node<String> node1 = testGraph.addVertex("a");
-//        Node<String> node2 = testGraph.addVertex("b");
-//        Node<String> node3 = testGraph.addVertex("c");
-//        Node<String> node4 = testGraph.addVertex("d");
-//
-//
+
+    @Test
+    public void depthFirstTest() {
+        Graph testGraph = new Graph<>();
+        Node nodeA = testGraph.addVertex("a");
+        Node nodeB = testGraph.addVertex("b");
+        Node nodeC = testGraph.addVertex("c");
+        Node nodeD = testGraph.addVertex("d");
+        Node nodeE = testGraph.addVertex("e");
+        Node nodeF = testGraph.addVertex("f");
+        Node nodeG = testGraph.addVertex("g");
+        Node nodeH = testGraph.addVertex("h");
+        testGraph.addEdge(nodeA, nodeD, 1);
+        testGraph.addEdge(nodeA, nodeB, 1);
+        testGraph.addEdge(nodeB, nodeC, 1);
+        testGraph.addEdge(nodeC, nodeG, 1);
+        testGraph.addEdge(nodeD, nodeF, 1);
+        testGraph.addEdge(nodeD, nodeE, 1);
+        testGraph.addEdge(nodeE, nodeH, 1);
+        testGraph.addEdge(nodeF, nodeH, 1);
+        Set<String> expected = new HashSet<>();
+        expected.add("a");
+        expected.add("b");
+        expected.add("c");
+        expected.add("d");
+        expected.add("e");
+        expected.add("f");
+        expected.add("g");
+        expected.add("h");
+        assertEquals("should equal 8", 8, testGraph.size());
+        assertEquals("actual should equal expected", expected, testGraph.depthFirstTraversal(nodeA));
+    }
 }
