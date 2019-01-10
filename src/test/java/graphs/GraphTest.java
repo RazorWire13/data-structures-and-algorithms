@@ -85,14 +85,14 @@ public class GraphTest {
         testGraph.addEdge(nodeE, nodeH, 1);
         testGraph.addEdge(nodeF, nodeH, 1);
         Set<String> expected = new HashSet<>();
-        expected.add("a");
-        expected.add("b");
-        expected.add("c");
-        expected.add("d");
-        expected.add("e");
-        expected.add("f");
-        expected.add("g");
-        expected.add("h");
+        expected.add(" a");
+        expected.add(" b");
+        expected.add(" c");
+        expected.add(" d");
+        expected.add(" e");
+        expected.add(" f");
+        expected.add(" g");
+        expected.add(" h");
         assertEquals("should equal 8", 8, testGraph.size());
         assertEquals("actual should equal expected", expected, testGraph.breadthFirstTraversal(nodeA));
     }
@@ -117,14 +117,14 @@ public class GraphTest {
         testGraph.addEdge(nodeE, nodeH, 1);
         testGraph.addEdge(nodeF, nodeH, 1);
         Set<String> expected = new HashSet<>();
-        expected.add("a");
-        expected.add("b");
-        expected.add("c");
-        expected.add("d");
-        expected.add("e");
-        expected.add("f");
-        expected.add("g");
-        expected.add("h");
+        expected.add(" a");
+        expected.add(" b");
+        expected.add(" c");
+        expected.add(" d");
+        expected.add(" e");
+        expected.add(" f");
+        expected.add(" g");
+        expected.add(" h");
         assertEquals("should equal 8", 8, testGraph.size());
         assertEquals("actual should equal expected", expected, testGraph.depthFirstTraversal(nodeA));
     }
