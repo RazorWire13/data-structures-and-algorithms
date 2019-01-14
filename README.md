@@ -36,6 +36,9 @@
 * [Challenge 27: Direct Flight Edges](./readmes/get-edge.md)
 * [Challenge 28: Depth First Graph Traversal](./readmes/depth-first-graph.md)
 
+## Week 7
+* [Challenge 29: Hash Tables](./readmes/hashtables.md)
+
 
 
 
