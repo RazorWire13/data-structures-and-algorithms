@@ -19,14 +19,13 @@ public class Graph<T> {
         Node nodeF = testGraph.addVertex("f");
         Node nodeG = testGraph.addVertex("g");
         Node nodeH = testGraph.addVertex("h");
-        testGraph.addEdge(nodeA, nodeD, 1);
-        testGraph.addEdge(nodeA, nodeB, 1);
-        testGraph.addEdge(nodeB, nodeC, 1);
-        testGraph.addEdge(nodeC, nodeG, 1);
-        testGraph.addEdge(nodeD, nodeF, 1);
-        testGraph.addEdge(nodeD, nodeE, 1);
-        testGraph.addEdge(nodeE, nodeH, 1);
-        testGraph.addEdge(nodeF, nodeH, 1);
+        nodeA.addEdge(nodeC);
+        nodeA.addEdge(nodeB);
+        nodeA.addEdge(nodeD);
+        nodeB.addEdge(nodeF);
+        nodeB.addEdge(nodeE);
+        nodeC.addEdge(nodeH);
+        nodeC.addEdge(nodeG);
 
         System.out.println("Breadth-first: " + testGraph.breadthFirstTraversal(nodeA).toString());
 
@@ -52,7 +51,7 @@ public class Graph<T> {
 
     public Set<Edge<T>> getNeighbors(Node node) {
         if (!this.nodes.contains(nodes)) {
-            throw new IllegalArgumentException("Node not in graph");
+            throw new IllegalArgumentException("getNeighbors can't work - Node not in graph");
         }
         return node.neighbors;
     }
@@ -61,7 +60,7 @@ public class Graph<T> {
         return this.nodes.size();
     }
 
-    public static Iterable<Node> breadthFirstTraversal(Node startNode) {
+    public static LinkedList<Node> breadthFirstTraversal(Node startNode) {
         LinkedList<Node> answer = new LinkedList<>();
         //keep track of nodes to visit
         Queue<Node> nodesToVisit = new LinkedList<>();
@@ -86,7 +85,7 @@ public class Graph<T> {
         return answer;
     }
 
-    public static Iterable<Node> depthFirstTraversal(Node startNode) {
+    public static LinkedList<Node> depthFirstTraversal(Node startNode) {
         LinkedList<Node> answer = new LinkedList<>();
         //keep track of nodes to visit
         Stack<Node> nodesToVisit = new Stack<>();
@@ -96,8 +95,6 @@ public class Graph<T> {
         visitedNodes.add(startNode);
 
         while(!nodesToVisit.isEmpty()) {
-            // take first ting out of queue
-            // add its neighbors to the queue if they haven't been seen yet
             Node currentNode = nodesToVisit.pop();
             answer.add(currentNode);
             for (Edge neighbor : (Set<Edge>) currentNode.neighbors) {
