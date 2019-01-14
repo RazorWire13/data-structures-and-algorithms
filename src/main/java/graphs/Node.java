@@ -21,6 +21,11 @@ public class Node<T> {
         this.neighbors.add(newEdge);
     }
 
+    protected void addEdge(Node<T> neighbor) {
+        Edge<T> newEdge = new Edge(neighbor);
+        this.neighbors.add(newEdge);
+    }
+
     public String toString() {
         return " " + this.value;
     }

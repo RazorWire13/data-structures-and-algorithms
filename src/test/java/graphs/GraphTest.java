@@ -45,7 +45,7 @@ public class GraphTest {
         Node nodeC = testGraph.addVertex("c");
         testGraph.addEdge(nodeA, nodeB, 1);
         testGraph.addEdge(nodeA, nodeC, 2);
-        assertEquals("neighbors of nodeA should be nodeB and nodeC", "b, c", testGraph.getNeighbors(nodeA));
+        assertEquals("neighbors of nodeA should be nodeB and nodeC", "{b, c}", testGraph.getNeighbors(nodeA).toArray());
     }
 
     @Test
@@ -76,24 +76,29 @@ public class GraphTest {
         Node nodeF = testGraph.addVertex("f");
         Node nodeG = testGraph.addVertex("g");
         Node nodeH = testGraph.addVertex("h");
-        testGraph.addEdge(nodeA, nodeD, 1);
-        testGraph.addEdge(nodeA, nodeB, 1);
-        testGraph.addEdge(nodeB, nodeC, 1);
-        testGraph.addEdge(nodeC, nodeG, 1);
-        testGraph.addEdge(nodeD, nodeF, 1);
-        testGraph.addEdge(nodeD, nodeE, 1);
-        testGraph.addEdge(nodeE, nodeH, 1);
-        testGraph.addEdge(nodeF, nodeH, 1);
+        Node nodeI = testGraph.addVertex("i");
+
+        nodeA.addEdge(nodeB);
+        nodeA.addEdge(nodeD);
+        nodeA.addEdge(nodeG);
+        nodeB.addEdge(nodeC);
+        nodeD.addEdge(nodeE);
+        nodeE.addEdge(nodeF);
+        nodeG.addEdge(nodeH);
+        nodeH.addEdge(nodeI);
+
         Set<String> expected = new HashSet<>();
         expected.add(" a");
-        expected.add(" b");
-        expected.add(" c");
         expected.add(" d");
-        expected.add(" e");
-        expected.add(" f");
         expected.add(" g");
+        expected.add(" b");
+        expected.add(" e");
         expected.add(" h");
-        assertEquals("should equal 8", 8, testGraph.size());
+        expected.add(" c");
+        expected.add(" f");
+        expected.add(" i");
+
+        assertEquals("should equal 9", 9, testGraph.size());
         assertEquals("actual should equal expected", expected, testGraph.breadthFirstTraversal(nodeA));
     }
 
@@ -108,24 +113,29 @@ public class GraphTest {
         Node nodeF = testGraph.addVertex("f");
         Node nodeG = testGraph.addVertex("g");
         Node nodeH = testGraph.addVertex("h");
-        testGraph.addEdge(nodeA, nodeD, 1);
-        testGraph.addEdge(nodeA, nodeB, 1);
-        testGraph.addEdge(nodeB, nodeC, 1);
-        testGraph.addEdge(nodeC, nodeG, 1);
-        testGraph.addEdge(nodeD, nodeF, 1);
-        testGraph.addEdge(nodeD, nodeE, 1);
-        testGraph.addEdge(nodeE, nodeH, 1);
-        testGraph.addEdge(nodeF, nodeH, 1);
+        Node nodeI = testGraph.addVertex("i");
+
+        nodeA.addEdge(nodeB);
+        nodeA.addEdge(nodeD);
+        nodeA.addEdge(nodeG);
+        nodeB.addEdge(nodeC);
+        nodeD.addEdge(nodeE);
+        nodeE.addEdge(nodeF);
+        nodeG.addEdge(nodeH);
+        nodeH.addEdge(nodeI);
+
         Set<String> expected = new HashSet<>();
         expected.add(" a");
         expected.add(" b");
         expected.add(" c");
+        expected.add(" g");
+        expected.add(" h");
+        expected.add(" i");
         expected.add(" d");
         expected.add(" e");
         expected.add(" f");
-        expected.add(" g");
-        expected.add(" h");
-        assertEquals("should equal 8", 8, testGraph.size());
+
+        assertEquals("should equal 9", 9, testGraph.size());
         assertEquals("actual should equal expected", expected, testGraph.depthFirstTraversal(nodeA));
     }
 }
