@@ -38,7 +38,7 @@
 
 ## Week 7
 * [Challenge 29: Hash Tables](./readmes/hashtables.md)
-
+* [Challenge 31: Repeated Word in Lengthy String](./readmes/repeated-word.md)
 
 
 
