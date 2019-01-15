@@ -27,7 +27,9 @@ public class Graph<T> {
         nodeC.addEdge(nodeH);
         nodeC.addEdge(nodeG);
 
-        System.out.println("Breadth-first: " + testGraph.breadthFirstTraversal(nodeA).toString());
+        System.out.println("Neighbors: " + testGraph.getNeighbors(nodeA));
+
+        System.out.println("Breadth-first: " + testGraph.breadthFirstTraversal(nodeA));
 
         System.out.println("Depth-first: " + testGraph.depthFirstTraversal(nodeA).toString());
     }
@@ -49,10 +51,7 @@ public class Graph<T> {
         return this.nodes;
     }
 
-    public Set<Edge<T>> getNeighbors(Node node) {
-        if (!this.nodes.contains(nodes)) {
-            throw new IllegalArgumentException("getNeighbors can't work - Node not in graph");
-        }
+    public Set<Edge<T>> getNeighbors(Node<T> node) {
         return node.neighbors;
     }
 

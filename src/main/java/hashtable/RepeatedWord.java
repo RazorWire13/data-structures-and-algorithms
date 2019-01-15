@@ -1,11 +1,12 @@
 package hashtable;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class RepeatedWord {
 
     public static void main(String[] args) {
-        System.out.println(repeatedWord("A-B!C,D#F'G&H@A"));
+        System.out.println(repeatedWord("It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York..."	));
     }
 
     public static String repeatedWord(String sentence) {
@@ -16,18 +17,19 @@ public class RepeatedWord {
         System.out.println(morphString);;
 
         // Eliminates all punctuation
-        morphString = morphString.replaceAll("[^a-z]"," ");
+        morphString = morphString.replaceAll("[^a-z ]","");
         System.out.println(morphString);;
 
         // Splits up string into individual array parts
         String[] splitString = morphString.split(" ");
         System.out.println(Arrays.toString(splitString));
 
-        // TODO: need logic to account for null pointer exception. Perhaps a do/while?
+        HashSet<String> wordBank = new HashSet<>();
         for (String string : splitString) {
-            hashtable.add(string, string);
-            if (hashtable.contains(string)) {
+            if (wordBank.contains(string)) {
                 return string;
+            } else {
+                wordBank.add(string);
             }
         }
         return "No Repeats";
