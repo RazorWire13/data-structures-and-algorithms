@@ -16,8 +16,8 @@ O(n) Time and O(n) Space
 
   - [x] Read challenge
   - [x] Whiteboard challenge
-  - [ ] Code Challenge
-  - [ ] Write tests
+  - [x] Code Challenge
+  - [x] Write tests
   - [x] A-C-P and document
 
 ### Reference Documents
