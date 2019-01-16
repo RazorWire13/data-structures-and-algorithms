@@ -37,6 +37,8 @@ public class BinaryTree<T> {
 
         testTree.breadthFirst(testTree.root);
         System.out.println(findMaxValue(maxTree));
+        ArrayList<TreeNode> a = preOrder(testTree.root);
+        System.out.println(a.get(0).value);
     }
 
     // PRE ORDER TRAVERSAL
