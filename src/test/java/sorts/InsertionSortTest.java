@@ -46,6 +46,22 @@ public class InsertionSortTest {
         InsertionSort sortTest = new InsertionSort();
         int[] arr = {0};
         int[] expected = {0};
-        assertEquals("sortTest length equals expected", Arrays.toString(expected), Arrays.toString(sortTest.insertionSort(arr)));
+        assertEquals("sortTest actual equals expected", Arrays.toString(expected), Arrays.toString(sortTest.insertionSort(arr)));
+    }
+
+    @Test
+    public void insertionSortReturn_TestReverse() {
+        InsertionSort sortTest = new InsertionSort();
+        int[] arr = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 10, 10};
+        assertEquals("sortTest actual equals expected", Arrays.toString(expected), Arrays.toString(sortTest.insertionSort(arr)));
+    }
+
+    @Test
+    public void insertionSortReturn_TestDuplicates() {
+        InsertionSort sortTest = new InsertionSort();
+        int[] arr = {10, 10, 8, 8, 6, 6, 6, 3, 2, 1};
+        int[] expected = {1, 2, 3, 6, 6, 6, 8, 8, 10, 10};
+        assertEquals("sortTest actual equals expected", Arrays.toString(expected), Arrays.toString(sortTest.insertionSort(arr)));
     }
 }
