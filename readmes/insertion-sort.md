@@ -5,7 +5,7 @@ Implement basic functionality methods of an insertion sort
 Implement a sort algorithm function for insertion sort that takes in an unsorted array and returns the array sorted using insertion sort.
 
 ## Approach & Efficiency
-O(n^2) Time and O(n) Space
+O(n^2) Time and O(1) Space
 
 ## Checklist
 
