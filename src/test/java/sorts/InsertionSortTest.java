@@ -25,7 +25,7 @@ public class InsertionSortTest {
     }
 
     @Test
-    public void insertionSortReturn_TestOctalInt() {
+    public void insertionSortReturn_TestSomeOctalInts() {
         InsertionSort sortTest = new InsertionSort();
         int[] arr = {03, 7, 02, 9, 07};
         int[] expected = {2, 3, 7, 7, 9};
