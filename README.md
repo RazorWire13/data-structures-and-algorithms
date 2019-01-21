@@ -42,5 +42,8 @@
 * [Challenge 32: Tree Intersection](./readmes/tree-intersection.md)
 * [Challenge 33: LEFT JOIN Hashmaps](.readmes/left-join-hashmaps.md)
 
+## Week 8
+* [Challenge 35: Insertion Sort](./readmes/insertion-sort.md)
+
 
 
