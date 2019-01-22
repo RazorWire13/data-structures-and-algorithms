@@ -44,6 +44,7 @@
 
 ## Week 8
 * [Challenge 35: Insertion Sort](./readmes/insertion-sort.md)
+* [Challenge 36: Merge Sort](./readmes/merge-sort.md)
 
 
 
