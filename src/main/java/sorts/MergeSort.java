@@ -3,43 +3,59 @@ package sorts;
 public class MergeSort {
 
     // Resourced from: https://www.baeldung.com/java-merge-sort
-    public static void mergeSort(int[] input, int n) {
-        if (n < 2) {
-            return;
+    public static int[] mergeSort(int[] inputArray) {
+        // Base case to return array
+        int arrLength = inputArray.length;
+        if (arrLength < 2) {
+            return inputArray;
         }
-        int mid = n/2;
-        int[] left = new int[mid];
-        int[] right = new int[n - mid];
+        // find middle value and left and right side values for iteration
+        int midpoint = (int)Math.floor(arrLength/2);
+        int[] leftSide = new int[midpoint];
+        int[] rightSide = new int[arrLength - midpoint];
 
-        for (int i = 0; i < mid; i++) {
-            left[i] = input[i];
+        // Left side array creation
+        for (int i = 0; i < leftSide.length; i++) {
+            leftSide[i] = inputArray[i];
         }
-        for (int i = mid; i < n; i++) {
-            right[i - mid] = input[i];
+        // Right side array creation
+        for (int i = 0; i < rightSide.length; i++) {
+            rightSide[i] = inputArray[i + midpoint];
         }
-        mergeSort(left, mid);
-        mergeSort(right, n - mid);
-        merge(input, left, right, mid, n - mid);
+        return merge(mergeSort(leftSide), mergeSort(rightSide));
     }
 
-    public static void merge(int[] input, int[] leftArray, int[] rightArray, int leftLength, int rightLength) {
+    public static int[] merge(int[] leftSide, int[] rightSide) {
+        // Track array indices
         int i = 0;
         int j = 0;
         int k = 0;
 
+        // Create sorted merge array to return
+        int leftLength = leftSide.length;
+        int rightLength = rightSide.length;
+        int [] mergeArray = new int[leftLength + rightLength];
+
+        // Conditional that checks values and appends lesser value to the mergeArray
         while (i < leftLength && j < rightLength) {
-            if (leftArray[i] <= rightArray[j]) {
-                input[k++] = leftArray[i++];
+
+            // Conditional courtesy of Michelle's brilliant mind!
+            if ((j == rightLength) || ((i < leftLength) && (leftSide[i] < rightSide[j])))
+            {
+                mergeArray[k++] = leftSide[i++];
             }
             else {
-                input[k++] = rightArray[j++];
+                mergeArray[k++] = rightSide[j++];
             }
         }
+
+        // Add leftSide and rightSide values to mergeArray;
         while (i < leftLength) {
-            input[k++] = leftArray[i++];
+            mergeArray[k++] = leftSide[i++];
         }
         while (j < rightLength) {
-            input[k++] = rightArray[j++];
+            mergeArray[k++] = rightSide[j++];
         }
+        return mergeArray;
     }
 }
