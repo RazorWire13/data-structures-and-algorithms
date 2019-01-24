@@ -29,7 +29,6 @@ public class HashtableTest {
         assertEquals("Return expected Key", expectedKeyA, nodeA.key);
         assertEquals("Return expected Value", expectedValueB, nodeB.value);
         assertTrue("Node contained in linked list", testTable.contains("7"));
-
     }
 
     @Test

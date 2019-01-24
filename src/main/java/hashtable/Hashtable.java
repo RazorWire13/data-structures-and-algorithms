@@ -7,7 +7,7 @@ public class Hashtable {
     // Resourced from: - https://coderanch.com/t/667996/java/building-simple-hash-table-scratch
 
     // Set up size of hashtable node array
-    protected int tableSize = 16;
+    protected int defaultTableSize = 16;
 
     // Instantiate node array
     protected LinkedList<Node>[] hashTable = new LinkedList[tableSize];
