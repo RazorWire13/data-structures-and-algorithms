@@ -10,7 +10,7 @@ public class Hashtable {
     protected int defaultTableSize = 16;
 
     // Instantiate node array
-    protected LinkedList<Node>[] hashTable = new LinkedList[tableSize];
+    protected LinkedList<Node>[] hashTable = new LinkedList[defaultTableSize];
 
     // returns the index of a passed in key
     public int getHash(String key) {
