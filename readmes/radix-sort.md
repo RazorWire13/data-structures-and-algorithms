@@ -5,13 +5,12 @@ Implement basic functionality methods of a RADIX sort
 Implement a sort algorithm function for RADIX sort that takes in an unsorted array and returns an array sorted using RADIX sort.
 
 ## Approach & Efficiency
-O(n^2) Time and O(n^2) Space
+O(d*(k+n)) Time / O(k+n) Space
 
 ## Solution
 ![Code Challenge 38](../assets/401-cc38-wb.JPG)
 
 ## Checklist
-
   - [x] Read challenge
   - [x] Whiteboard Challenge
   - [x] Code Challenge
