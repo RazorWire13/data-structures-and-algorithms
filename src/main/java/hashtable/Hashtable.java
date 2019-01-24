@@ -1,5 +1,7 @@
 package hashtable;
 
+import java.util.LinkedList;
+
 public class Hashtable {
 
     // Resourced from: - https://coderanch.com/t/667996/java/building-simple-hash-table-scratch
@@ -8,16 +10,26 @@ public class Hashtable {
     protected int defaultTableSize = 16;
 
     // Instantiate node array
-    protected Node[] hashTable = new Node[defaultTableSize];
+    protected LinkedList<Node>[] hashTable = new LinkedList[tableSize];
 
     // returns the index of a passed in key
     public int getHash(String key) {
-        Object hashKey = key;
-        int index = Math.abs(hashKey.hashCode() % defaultTableSize);
-        return index;
+
+        // hashing function
+        long index = 0;
+        for (char character : key.toCharArray()) {
+            index += (character);
+        }
+
+        // multiply by prime number for uniqueness and convert to an index value within the range of the array
+        index += 137;
+        index = index % hashTable.length;
+
+        return (int) index;
     }
+
     // The 'add' function takes in a key/value string pair and adds it to the hashtable
-    public void add(String key, String value) {
+    public Node add(String key, String value) {
 
         // Send the key to the GetHash method.
         int index = getHash(key);
@@ -27,39 +39,34 @@ public class Hashtable {
 
         // Check if something exists at that index already, if it doesn’t, add it with the key/value pair.
         if (hashTable[index] == null) {
-            hashTable[index] = newHashNode;
-
-        } else {
-
-            // If something does exist, add the new key/value pair to the data structure within that bucket.
-            Node nodeToAdd = hashTable[index];
-            while (nodeToAdd.next != null) {
-                nodeToAdd = nodeToAdd.next;
-            }
-            nodeToAdd.next = newHashNode;
+            hashTable[index] = new LinkedList<>();
         }
+        hashTable[index].add(newHashNode);
+        return newHashNode;
     }
 
     // The Contains method will accept a key, and return a bool on if that key exists inside the hashtable.
     public boolean contains(String key) {
         int index = getHash(key);
-            if (hashTable[index].key.equals(key)) {
-                return true;
+        if (hashTable[index] != null) {
+            for (Node n : hashTable[index]) {
+                if (hashTable[index].peek().key == key) {
+                    return true;
+                }
             }
-            return false;
         }
+        return false;
+    }
 
     // The Find takes in a key, gets the Hash, and goes to the index location specified.
     public String find(String key) {
         int index = getHash(key);
-        Node nodeToFind = hashTable[index];
-
-        // Once the index location is found in the array see if the key exists and return the value.
-        while (nodeToFind != null) {
-            if (nodeToFind.key.equals(key)) {
-                return nodeToFind.value;
+        if (hashTable[index] != null) {
+            for (Node n : hashTable[index]) {
+                if (hashTable[index].peek().key == key) {
+                    return hashTable[index].peek().value;
+                }
             }
-            nodeToFind = nodeToFind.next;
         }
         return null;
     }

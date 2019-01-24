@@ -23,8 +23,9 @@ Implement a Hashtable with the following capabilities:
 * The GetHash will accept a key as a string, conduct the hash, and then return the index of the array where the key/value should be placed.
 
 ## Approach & Efficiency
-O(1) Time and O(n) Space
-
+ add() - O(n) Time and O(1) Space
+ find() & contains() - O(n) Time O(1) Space
+ 
 ## Checklist
 
   - [x] Read challenge
