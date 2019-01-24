@@ -11,7 +11,6 @@ O(nLogn) Time and O(n) Space
 ![Code Challenge 36](../assets/401-cc36-wb.JPG)
 
 ## Checklist
-
   - [x] Read challenge
   - [x] Whiteboard Challenge
   - [x] Code Challenge

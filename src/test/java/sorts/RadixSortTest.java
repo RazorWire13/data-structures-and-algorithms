@@ -45,6 +45,15 @@ public class RadixSortTest {
     }
 
     @Test
+    public void radixSort_TestMixed() {
+        int[] testArray = new int[] { 25, 189, 4356, 918, 47, 861, 7010 };
+        int[] expected = new int[] { 25, 47, 189, 861, 918, 4356, 7010 };
+        System.out.println(Arrays.toString(testArray));
+        assertEquals("radixSort should return expected array", Arrays.toString(expected), Arrays.toString(RadixSort.radixSort(testArray)));
+        System.out.println(Arrays.toString(testArray));
+    }
+
+    @Test
     public void radixSort_TestEmpty() {
         int[] testArray = new int[] { };
         int[] expected = new int[] { };
