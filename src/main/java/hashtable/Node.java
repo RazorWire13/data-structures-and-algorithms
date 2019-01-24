@@ -20,14 +20,18 @@ public class Node {
     public Node() {
         this.next = null;
     }
-
     public String getKey() {
-        return key;
+        return this.key;
     }
+    public void setKey(String newKey) { this.key = newKey; }
 
     public String getValue() {
-        return value;
+        return this.value;
     }
+    public void setValue(String newValue) { this.value = newValue; }
+
+    public Node getNext() { return this.next; }
+    public void setNext(Node newNext) { this.next = newNext; }
 
     public String toString() {
         return "Node key= " + key + "; val= " + value + ", next= " + next + "<";

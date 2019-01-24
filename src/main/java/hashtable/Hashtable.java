@@ -2,28 +2,18 @@ package hashtable;
 
 public class Hashtable {
 
-    public static void main(String[] args) {
-        Hashtable testTable = new Hashtable();
-        testTable.add("42", "Dave");
-        System.out.println(testTable.getHash("42"));
-        System.out.println(testTable.getHash("0"));
-
-        System.out.println(testTable.contains("42"));
-        System.out.println(testTable.find("42"));
-    }
-
     // Resourced from: - https://coderanch.com/t/667996/java/building-simple-hash-table-scratch
 
     // Set up size of hashtable node array
-    protected int tableSize = 16;
+    protected int defaultTableSize = 16;
 
     // Instantiate node array
-    protected Node[] hashTable = new Node[tableSize];
+    protected Node[] hashTable = new Node[defaultTableSize];
 
     // returns the index of a passed in key
     public int getHash(String key) {
         Object hashKey = key;
-        int index = Math.abs(hashKey.hashCode() % tableSize);
+        int index = Math.abs(hashKey.hashCode() % defaultTableSize);
         return index;
     }
     // The 'add' function takes in a key/value string pair and adds it to the hashtable
