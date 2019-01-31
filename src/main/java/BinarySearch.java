@@ -4,7 +4,7 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] sortedArray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int key = 8;
+        int key = 9;
         int joy = binarySearch(sortedArray, key);
 //        System.out.println(binarySearch(sortedArray, key));
         System.out.println("The key is at position " + joy);
